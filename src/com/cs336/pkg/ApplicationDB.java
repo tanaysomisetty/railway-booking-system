@@ -13,7 +13,7 @@ public class ApplicationDB {
 	public Connection getConnection() {
 		// creates connection string to the AWS RDBS
 		// jdcbd:mysql://<hostname>:port/Database
-		String connectionURL = "jdbc:mysql://cs336test.c7y8oeljbznd.us-east-2.rds.amazonaws.com:3306/CustomerLogin";
+		String connectionURL = "jdbc:mysql://project2.c7y8oeljbznd.us-east-2.rds.amazonaws.com:3306/CustomerLogin";
 		Connection connection = null;
 
 		try {
@@ -27,7 +27,7 @@ public class ApplicationDB {
 		}
 		try {
 			// Create a connection to your DB
-			connection = DriverManager.getConnection(connectionURL, "moussa", "league12");
+			connection = DriverManager.getConnection(connectionURL, "cs336", "cs336group25");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -19,10 +19,10 @@
 		//SQL statement to check if user exists
 		Statement stmt = con.createStatement();
 
-		//Get parameters from the HTML form at the HelloWorld.jsp
+		//Get parameters from the HTML form at the index.jsp
 		String newUser = request.getParameter("username");
 		String pass = request.getParameter("password");
-		
+		//add erorr check to check length of username and password?
 		//query to check if the user exists first
 		ResultSet rs;
 		rs = stmt.executeQuery("select * from  accounts where username ='" + newUser + "' and password='" + pass + "'");
