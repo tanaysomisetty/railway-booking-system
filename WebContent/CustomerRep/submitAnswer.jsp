@@ -12,6 +12,7 @@
 <body>
 	<%
 	try {
+		//need to fix submit
 		//check all questions send by a specific user and see if they are answered
 		ApplicationDB db = new ApplicationDB();
 		Connection con = db.getConnection();
