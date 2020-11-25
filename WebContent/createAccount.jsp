@@ -22,20 +22,29 @@
 		//Get parameters from the HTML form at the index.jsp
 		String newUser = request.getParameter("username");
 		String pass = request.getParameter("password");
-		//add erorr check to check length of username and password?
+		//serach from table based on paramter
+		String accountType = request.getParameter("account");
+		//accounttype not selected or password or newUser are null error check
+		if( accountType ==null || pass =="" || newUser ==""){
+			out.println("Please make sure to fill out all Fields <a href='index.jsp'>try again</a>");
+			return;
+		}
 		//query to check if the user exists first
 		ResultSet rs;
-		rs = stmt.executeQuery("select * from  accounts where username ='" + newUser + "' and password='" + pass + "'");
+		rs = stmt.executeQuery("select * from " + accountType + " where username ='" + newUser + "'" );
 		//user exists print an error
 		if(rs.next()){
 			out.println("User already exists please login <a href='index.jsp'> try again </a>");
 		}
 		else {
 		//insert user query
-		PreparedStatement createUser = con.prepareStatement("Insert into accounts values (?,?)");
-		createUser.setString(1, newUser);
-		createUser.setString(2,pass);
-		createUser.executeUpdate();
+		String insertTuple = String.format("('%s','%s')",newUser,pass);
+		stmt.executeUpdate("Insert into " + accountType +" (username,password) values " + insertTuple );
+		//PreparedStatement createUser = con.prepareStatement("Insert into ? (username,password) values ('?','?')");
+		/*createUser.setString(1,accountType);
+		createUser.setString(2, newUser);
+		createUser.setString(3,pass);
+		createUser.executeUpdate();*/
 		out.println("User created! <a href='index.jsp'>Click here to Login </a>");
 		}
 		
