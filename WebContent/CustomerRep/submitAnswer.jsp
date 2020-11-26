@@ -17,6 +17,8 @@
 		ApplicationDB db = new ApplicationDB();
 		Connection con = db.getConnection();
 		String[] answers = request.getParameterValues("answer");
+		String[] questions = request.getParameterValues("question");
+		String[] category = request.getParameterValues("category");
 		//SQL statement to check if the question exists
 		Statement stmt = con.createStatement();
 		ResultSet rs;
@@ -30,11 +32,12 @@
 		//update answers
 		int i=0;
 		while(i < answers.length){
-			stmt.executeUpdate("Update Questions set answer = '" + answers[i] +"'" + " where category = '" + rs.getString("category") + "'"  + 
-		" and questionStatement = '" + rs.getString("questionStatement") + "'" );
+			stmt.executeUpdate("Update Questions set answer = '" + answers[i] +"'" + " where category = '" + questions[i] + "'"  + 
+		" and questionStatement = '" + category[i] + "'" );
 			i++;
 			
 		}
+		out.println("Question Answered Thank you! Click here to return to Navigation Page <br> <a href='CustomerRep.jsp'> Click here to return to Navigation Page  </a>");
 	}
 		catch (Exception ex) {
 			out.print(ex);

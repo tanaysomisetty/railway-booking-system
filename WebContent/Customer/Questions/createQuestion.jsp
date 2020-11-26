@@ -25,6 +25,10 @@
 			out.println("Please make sure to fill out all Fields <a href='Ask.jsp'>try again</a>");
 			return;
 		}
+		if(category == null){
+			out.println("Please select a Question Type <a href = 'Ask.jsp'> try again </a>");
+			return;
+		}
 		ResultSet rs;
 		//check if question is in table
 		rs = stmt.executeQuery("select * from  Questions"  + " where username ='" + user + "' and questionStatement = '" + question + "'" + " and category ='" + category + "'" );
@@ -35,7 +39,7 @@
 		else {
 			String insertTuple = String.format("('%s','%s','%s')",user,question,category);
 			stmt.executeUpdate("Insert  into Questions (username,questionStatement,category) values " + insertTuple);
-			out.println("Question sent to Customer Service, Please wait for a Reprsenattive to answer. <br> <a href='Customer.jsp'> Thank you </a>");
+			out.println("Question sent to Customer Service, Please wait for a Reprsenattive to answer. <br> <a href='../Customer.jsp'> Thank you </a>");
 		}
 	} catch (Exception ex) {
 		out.print(ex);

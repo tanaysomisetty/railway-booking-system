@@ -22,18 +22,19 @@
  <%
 	}
  %>
-	<!-- Buttons for each Option, Browse and Search, Reservations, Questions -->
+	<!-- Buttons for each Option, Browse and Search, Reservations, Questions
+		Need to code Search and Reservations.jsp -->
 	<form action="Search.jsp" method="GET">
 		<input type="submit" value="Browse & Search">
 	</form>
 	<form action="Reservations.jsp" method="GET">
 		<input type="submit" value="Reservations">
 	</form>
-	<form action="Questions.jsp" method="GET">
+	<form action="Questions/Questions.jsp" method="GET">
 		<input type="submit" value="Questions">
 	</form>
 	
-	<form action = "checkQuestions.jsp" method = "Get">
+	<form action = "Questions/checkQuestions.jsp" method = "Get">
 	<input type="submit" value="Check status of sent Questions">
 	</form>
 	

@@ -10,7 +10,7 @@
 	<form action="checkQuestions.jsp" method="Get">
 		<input type="submit" value="View Customer Representative Answers">
 	</form>
-	<form action='questionsByCategory' method="Get">
+	<form action='questionsByCategory.jsp' method="Get">
 		<input Type="Submit"
 			value=" View Questions and Answers by Selecting a Category">
 	</form>

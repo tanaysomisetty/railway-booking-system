@@ -7,24 +7,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Answer Questions</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<%
-		
-	try {
+		try {
 		//check all questions send by a specific user and see if they are answered
 		ApplicationDB db = new ApplicationDB();
 		Connection con = db.getConnection();
 
 		//SQL statement to check if the question exists
 		Statement stmt = con.createStatement();
+		String user = session.getAttribute("user").toString();
 		ResultSet rs;
 		//check if question is in table
-		rs = stmt.executeQuery("select category,questionStatement from  Questions where answer is null");
+		rs = stmt.executeQuery("select category,questionStatement, answer from  Questions" + " where username ='" + user
+		+ "'" + " and answer is not null");
 		//no questions are answered or no questions sent by user
 		if (!rs.isBeforeFirst()) {
-			out.print("No Questions are available  ");
+			out.print("No answers have been answered by Customer Reprsenative ");
 			return;
 		}
 		//print out contents of query
@@ -50,45 +51,34 @@
 			out.print("</tr>");
 
 			//parse out the results, accessed one tuple at a time
-	%>
-	<form action = "submitAnswer.jsp" method = 'GET'>
-	<%
-		while (rs.next()) {
+			while (rs.next()) {
 		//make a row
 		out.print("<tr>");
 		//make a column
 		out.print("<td>");
 		//Print out current category:
-		String category = rs.getString("category");
-		out.print(category);
+		out.print(rs.getString("category"));
 		out.print("</td>");
 		out.print("<td>");
 		//Print out current question:
-		String questionStatement = rs.getString("questionStatement");
-		out.print(questionStatement);
+		out.print(rs.getString("questionStatement"));
 		out.print("</td>");
 		out.print("<td>");
-		//Print out field for user to input answer
-		//pass each question and category with answer, hidden
-			%>
-		<input type = "hidden" name = "category" value =  <%= category %>>
-		<input type = "hidden" name = "question" value = <%= questionStatement %>>
-		<input type="text" name = "answer">	
-		<% 
+		//Print out answer:
+		out.print(rs.getString("answer"));
 		out.print("</td>");
 		out.print("</tr>");
 
-	}
-	out.print("</table>");
+			}
+			out.print("</table>");
 
-	}
+		}
+		out.println("Questions answered by Customer Service. <br> <a href='../Customer.jsp'> Click here to return to Navigation Menu </a>");
 
 	} catch (Exception ex) {
-	out.print(ex);
-	out.print(" failed :()");
+		out.print(ex);
+		out.print(" failed :()");
 	}
 	%>
-	<input type="submit" value="Submit">
-	</form>
 </body>
 </html>

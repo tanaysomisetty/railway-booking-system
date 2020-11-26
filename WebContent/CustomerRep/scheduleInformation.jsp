@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-	//have an account username:QuestionSetter which sets all of the questions needed initially and supplies answers
-%>
+
 </body>
 </html>

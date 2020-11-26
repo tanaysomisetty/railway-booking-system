@@ -7,28 +7,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Answers</title>
 </head>
 <body>
 	<%
-		try {
-		//check all questions send by a specific user and see if they are answered
+		//have an account username:QuestionSetter which sets all of the questions needed initially and supplies answers
+	try {
 		ApplicationDB db = new ApplicationDB();
 		Connection con = db.getConnection();
 
-		//SQL statement to check if the question exists
 		Statement stmt = con.createStatement();
 		String user = session.getAttribute("user").toString();
+		String category = request.getParameter("category");
 		ResultSet rs;
-		//check if question is in table
-		rs = stmt.executeQuery("select category,questionStatement, answer from  Questions" + " where username ='" + user
-		+ "'" + " and answer <> null");
+		rs = stmt.executeQuery("select category,questionStatement, answer from  Questions" + " where username ='QuestionSetter' and category = '" + category + "'");
 		//no questions are answered or no questions sent by user
-		if (!rs.next()) {
-			out.print("No answers have been answered by Customer Reprsenative ");
+		if (!rs.isBeforeFirst()) {
+			out.print("No answers have been set up yet!  <a href='../Customer.jsp'> Click here to return to Navigation Menu </a>");
 			return;
 		}
-		//print out contents of query
 		else {
 			//Make an HTML table to show the results in:
 			out.print("<table>");
@@ -73,7 +70,7 @@
 			out.print("</table>");
 
 		}
-
+		out.println(" Frequently Asked Questions Answered! for" + category +". <br> <a href='../Customer.jsp'> Click here to return to Navigation Menu </a>");
 	} catch (Exception ex) {
 		out.print(ex);
 		out.print(" failed :()");
