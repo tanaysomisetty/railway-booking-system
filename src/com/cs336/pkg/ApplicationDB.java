@@ -13,7 +13,7 @@ public class ApplicationDB {
 	public Connection getConnection() {
 		// creates connection string to the AWS RDBS
 		// jdcbd:mysql://<hostname>:port/Database
-		String connectionURL = "jdbc:mysql://project2.c7y8oeljbznd.us-east-2.rds.amazonaws.com:3306/CustomerLogin";
+		String connectionURL = "jdbc:mysql://project2.c7y8oeljbznd.us-east-2.rds.amazonaws.com:3306/Group25Train";
 		Connection connection = null;
 
 		try {
