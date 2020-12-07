@@ -12,7 +12,7 @@
 	if (session.getAttribute("user") == null){
  %>
  You are not logged in <br/>
- <a href= "index.jsp"> Please Login</a>
+ <a href= "../index.jsp"> Please Login</a>
  <%
 	} else {
 	
@@ -30,7 +30,7 @@
 		<input type="submit" value="Train Schedules">
 	</form>
 	<form action="customerReservations.jsp" method="GET">
-		<input type="submit" value="Reservations">
+		<input type="submit" value="Reservations by Transit Line">
 	</form>
 	
 	

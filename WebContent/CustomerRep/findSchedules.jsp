@@ -17,21 +17,22 @@
 
 		Statement stmt = con.createStatement();
 		String stationType = request.getParameter("name");
-		String stationName = request.getParameter("stationName");
+		String stationName = request.getParameter("station");
 		//find station name from station and use its id to find trainschedules
 		ResultSet rs;
 		rs = stmt.executeQuery("select stationId from Station where name = '" + stationName + "'");
-		if (rs.isBeforeFirst()) {
+		if (!rs.isBeforeFirst()) {
 			//error mereturn to Navigation Menu </a>" ")
 			out.print("Station doesnt exist <a href='CustomerRep.jsp'> Click here to return to Navigation Menu </a>");
 			return;
 		}
+		//maybe add total fare?
 		int stationId = rs.getInt("stationId");
 		rs = stmt.executeQuery(
 		"select transitLineName, trainId, originStationId, destinationStationId from TrainSchedule where "
 				+ stationType + "  =" + stationId);
 
-		if (rs.isBeforeFirst()) {
+		if (!rs.isBeforeFirst()) {
 			out.print("No Schedules Match given Station as" + stationType
 			+ "<a href='CustomerRep'> Click here to return to Navigation Menu </a>");
 			return;
@@ -80,8 +81,6 @@
 			out.print("destinationStationId");
 			out.print("</td>");
 			out.print("</tr>");
-			out.print("</tr>");
-
 		}
 		out.println(" Schedules for Station:" + stationName + " as a" + stationType + ". <br> <a href='/CustomerRep.jsp'> Click here to return to Navigation Menu </a>");
 		out.print("</table>");
