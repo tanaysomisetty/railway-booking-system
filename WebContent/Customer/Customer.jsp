@@ -24,7 +24,7 @@
  %>
 	<!-- Buttons for each Option, Browse and Search, Reservations, Questions
 		Need to code Search and Reservations.jsp -->
-	<form action="Search.jsp" method="GET">
+	<form action="browseSearch/bsMainPage.jsp" method="GET">
 		<input type="submit" value="Browse & Search">
 	</form>
 	<form action="Reservations.jsp" method="GET">
