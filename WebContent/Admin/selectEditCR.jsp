@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Delete Customer Reps</title>
+<title>Select Edit Customer Reps</title>
 </head>
 <body>
 <%
@@ -28,10 +28,10 @@
 		}
 	
  %>
-	<form action="deletingCR.jsp" method="POST">
+	<form action="editCR.jsp" method="POST">
 		<label for="ssn">Social Security Number:</label>
 		<input type="text" id="ssn" name="ssn"><br><br>
-		<input type="submit" value="Delete">
+		<input type="submit" value="Submit">
 	</form>
 	
 	<button href="admincustomerRep.jsp">Back</button>

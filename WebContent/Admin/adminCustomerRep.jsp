@@ -103,11 +103,14 @@
 	<form action="addCR.jsp" method="GET">
 		<input type="submit" value="Add">
 	</form>
-	<form action="editCR.jsp" method="GET">
+	<form action="selectEditCR.jsp" method="GET">
 		<input type="submit" value="Edit">
 	</form>
 	<form action="deleteCR.jsp" method="GET">
 		<input type="submit" value="Delete">
+	</form>
+	<form action="Admin.jsp" method="GET">
+		<input type="submit" value="Back">
 	</form>
 	
  <%

@@ -15,100 +15,34 @@
 	if (session.getAttribute("user") == null){
  %>
  You are not logged in <br/>
+ 
  <a href= "index.jsp"> Please Login</a>
  <%
 	} else {
 		
 		try {
-			ApplicationDB db = new ApplicationDB();
-			Connection con = db.getConnection();
-
-			Statement stmt = con.createStatement();
-			ResultSet rs;
-			rs = stmt.executeQuery("select * from CustomerRep");
-			/* if (rs.isBeforeFirst()) {
-				//error mereturn to Navigation Menu </a>" ")
-				out.print("Station doesnt exist <a href='CustomerRep.jsp'> Click here to return to Navigation Menu </a>");
-				return;
-			}		//int stationId = rs.getInt("stationId");
-			rs = stmt.executeQuery(
-			"select transitLineName, trainId, originStationId, destinationStationId from TrainSchedule where "
-					+ stationType + "  =" + stationId);
-
-			if (rs.isBeforeFirst()) {
-				out.print("No Schedules Match given Station as" + stationType
-				+ "<a href='CustomerRep'> Click here to return to Navigation Menu </a>");
-				return;
-			} */
-			out.print("<table>");
-
-			out.print("<tr>");
 			
-			out.print("<td>");
-			out.print("username");
-			out.print("</td>");
-			
-			out.print("<td>");
-			out.print("password");
-			out.print("</td>");
-			
-			out.print("<td>");
-			out.print("ssn");
-			out.print("</td>");
-
-			out.print("<td>");
-			out.print("First");
-			out.print("</td>");
-			
-			out.print("<td>");
-			out.print("Last");
-			out.print("</td>");
-			
-			out.print("</tr>");
-
-			//parse out the results, accessed one tuple at a time
-			while (rs.next()) {
-				out.print("<tr>");
-				
-				out.print("<td>");
-				out.print(rs.getString("username"));
-				out.print("</td>");
-				
-				out.print("<td>");
-				out.print(rs.getString("password"));
-				out.print("</td>");
-				
-				out.print("<td>");
-				out.print(rs.getString("ssn"));
-				out.print("</td>");
-				
-				out.print("<td>");
-				out.print(rs.getString("firstName"));
-				out.print("</td>");
-				
-				out.print("<td>");
-				out.print(rs.getString("lastName"));
-				out.print("</td>");
-				out.print("</tr>");
-
-			}
-			// out.println("Customer Reps:" + ". <br> <a href='/CustomerRep.jsp'> Click here to return to Navigation Menu </a>");
-			out.print("</table>");
 		} catch (Exception ex) {
 			out.print(ex);
 			out.print(" failed :()");
 		}
 	
  %>
-	<form action="addCR.jsp" method="GET">
-		<input type="submit" value="Add">
+	<form action="addingCR.jsp" method="POST">
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username"><br><br>
+		<label for="password">Password:</label>
+		<input type="text" id="password" name="password"><br><br>
+		<label for="ssn">Social Security Number:</label>
+		<input type="text" id="ssn" name="ssn"><br><br>
+		<label for="fname">First Name:</label>
+		<input type="text" id="fname" name="fname"><br><br>
+		<label for="lname">Last Name:</label>
+		<input type="text" id="lname" name="lname"><br><br>
+		<input type="submit" value="Submit">
 	</form>
-	<form action="editCR.jsp" method="GET">
-		<input type="submit" value="Edit">
-	</form>
-	<form action="deleteCR.jsp" method="GET">
-		<input type="submit" value="Delete">
-	</form>
+	
+	<button href="admincustomerRep.jsp">Back</button>
 	
  <%
 	}

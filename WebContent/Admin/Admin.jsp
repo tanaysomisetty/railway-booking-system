@@ -29,7 +29,10 @@
 	<form action="salesReport.jsp" method="GET">
 		<input type="submit" value="Sales Report">
 	</form>
+	
 	<form action="adminReservations.jsp" method="GET">
+		<input type="radio" name="reservationType" value="transit">Reservations By Transit Line</input>
+		<input type="radio" name="reservationType" value="customer">Reservations By Customer Name</input>
 		<input type="submit" value="Reservations">
 	</form>
 	<form action="revenue.jsp" method="GET">
