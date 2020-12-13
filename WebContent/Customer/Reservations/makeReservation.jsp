@@ -18,92 +18,103 @@
 		Connection con = db.getConnection();
 		Statement stmt = con.createStatement();
 		ResultSet rs;
-		rs = stmt.executeQuery("select transitLineName, trainId, originStationId, destinationStationId, dateOfTravel, departureTime, arrivalTime, fare from TrainSchedule");
+		rs = stmt.executeQuery("select transitLineName, trainId, originStationId, destinationStationId, dateOfTravel, departureTime, arrivalTime, typeOfTrip, fare from TrainSchedule");
 		if(!rs.isBeforeFirst()){
 			out.print("No reservations have been made");
 		}
 		else{
 			
-			out.print("<table>");
+			out.print("<table border='1'>");
 			
 			//make a row
 			out.print("<tr>");
 			//make a column
-			out.print("<td>");
+			out.print("<th>");
 			//print out the column header
 			out.print("Transit Line");
-			out.print("</td>");
+			out.print("</th>");
 			
 			//make a column
-			out.print("<td>");
+			out.print("<th>");
 			//print out the column header
 			out.print("TrainId");
-			out.print("</td>");
+			out.print("</th>");
 			
-			out.print("<td>");
+			out.print("<th>");
 			//print out the column header
 			out.print("Origin Station");
-			out.print("</td>");
+			out.print("</th>");
 			
-			out.print("<td>");
+			out.print("<th>");
 			//print out the column header
 			out.print("Destination Station");
-			out.print("</td>");
+			out.print("</th>");
 			
-			out.print("<td>");
+			out.print("<th>");
 			//print out the column header
 			out.print("Date of Travel");
-			out.print("</td>");
+			out.print("</th>");
 			
-			out.print("<td>");
+			out.print("<th>");
 			//print out the column header
 			out.print("Departure Time");
-			out.print("</td>");
+			out.print("</th>");
 			
-			out.print("<td>");
+			out.print("<th>");
 			//print out the column header
 			out.print("Arrival Time");
-			out.print("</td>");
+			out.print("</th>");
 			
-			out.print("<td>");
+			out.print("<th>");
+			//print out the column header
+			out.print("Type of Trip ");
+			out.print("</th>");
+			//out.print("</tr>");
+			
+			out.print("<th>");
 			//print out the column header
 			out.print("Fare $");
-			out.print("</td>");
+			out.print("</th>");
 			out.print("</tr>");
 			
 			while(rs.next()){
 				out.print("<tr>");
-				out.print("<td>");
+				out.print("<td style='text-align:center'>");
 				//print out the column header
 				out.print(rs.getString("transitLineName"));
+				//out.print("<td style='text-align:right'>$100</td> </td>");
 				out.print("</td>");
 				
-				out.print("<td>");
+				out.print("<td style='text-align:center'>");
 				out.print(rs.getString("trainId"));
 				out.print("</td>");
 
-				out.print("<td>");
+				out.print("<td style='text-align:center'>");
 				out.print(rs.getString("originStationId"));
 				out.print("</td>");
 				
-				out.print("<td>");
+				out.print("<td style='text-align:center'>");
 				out.print(rs.getString("destinationStationId"));
 				out.print("</td>");
 				
-				out.print("<td>");
+				out.print("<td style='text-align:center'>");
 				out.print(rs.getString("dateOfTravel"));
 				out.print("</td>");
 				
-				out.print("<td>");
+				out.print("<td style='text-align:center'>");
 				out.print(rs.getString("departureTime"));
 				out.print("</td>");
 				
-				out.print("<td>");
+				out.print("<td style='text-align:center'>");
 				out.print(rs.getString("arrivalTime"));
 				out.print("</td>");
 				
+				out.print("<td style='text-align:center'>");
+				out.print(rs.getString("typeOfTrip"));
+				out.print("</td>");
+				//out.print("</tr>");
 				
-				out.print("<td>");
+				out.print("<td style='text-align:center'>");
 				out.print(rs.getString("fare"));
 				out.print("</td>");
 				out.print("</tr>");
@@ -126,10 +137,11 @@
 		<br> Transit line: <input type="text" name="line" /> <br>
 		Train id: <input type="text" name="id" /> <br>
 		Date for reservation: <input type="text" name="date" /> <br>
+		Please select type of trip: <input type="radio" name="typeOfTrip" value="One-way" />One-way <input type="radio" name="typeOfTrip" value="Two-way" />Two-way <br>
 		Please select discount (if applicable): <br> 
 		<input type="radio" name="discount" value="Children" />Children	<br>
 		<input type="radio" name="discount" value="Senior" /> Senior <br>
-		<input type="radio" name="discount" value="Disabled" /> Disabled <br> 
+		<input type="radio" name="discount" value="Disabled" /> Disabled <br>
 		<input type="submit" value="Reserve"> <br>
 	</form>
 
