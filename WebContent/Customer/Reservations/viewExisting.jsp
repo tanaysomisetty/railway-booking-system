@@ -113,8 +113,7 @@
 		out.print(ex);
 		out.print("Exception at viewExisting catch");
 	}
-	
-	//The next part will make the reservation and display a confirm
+
 %>
 
 <form action="cancelReservation.jsp" method="POST">
