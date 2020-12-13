@@ -103,11 +103,15 @@
 			
 			if(resType.equals("customer")){
 				
-				rs = stmt.executeQuery("select c.firstname, c.username, r.reservationNum, r.date, r.fare, r.transitLineName, r.trainId from Reservation as r, Customer as c WHERE r.username = c.username ORDER BY c.firstname");
+				rs = stmt.executeQuery("select c.lastname, c.firstname, c.username, r.reservationNum, r.date, r.fare, r.transitLineName, r.trainId from Reservation as r, Customer as c WHERE r.username = c.username ORDER BY c.lastname");
 				
 				out.print("<table>");
 				
 				out.print("<tr>");
+				
+				out.print("<td>");
+				out.print("lastName");
+				out.print("</td>");
 				
 				out.print("<td>");
 				out.print("firstName");
@@ -141,6 +145,10 @@
 				
 				while(rs.next()){
 					out.print("<tr>");
+					
+					out.print("<td>");
+					out.print(rs.getString("c.lastName"));
+					out.print("</td>");
 								
 					out.print("<td>");
 					out.print(rs.getString("c.firstName"));
