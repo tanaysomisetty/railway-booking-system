@@ -42,55 +42,53 @@
 			} */
 			out.print("<table>");
 
-			//make a row
 			out.print("<tr>");
-			//make a column
+			
 			out.print("<td>");
-			//print out column header
 			out.print("username");
 			out.print("</td>");
-			//make a column
+			
 			out.print("<td>");
 			out.print("password");
 			out.print("</td>");
-			//make a column
+			
 			out.print("<td>");
 			out.print("ssn");
 			out.print("</td>");
 
-			out.print("</td>");
-			out.print("firstName");
+			out.print("<td>");
+			out.print("First");
 			out.print("</td>");
 			
 			out.print("<td>");
-			out.print("LastName");
+			out.print("Last");
 			out.print("</td>");
+			
 			out.print("</tr>");
 
 			//parse out the results, accessed one tuple at a time
 			while (rs.next()) {
-				//make a row
 				out.print("<tr>");
-				//make a column
+				
 				out.print("<td>");
-				//Print out current category:
 				out.print(rs.getString("username"));
 				out.print("</td>");
+				
 				out.print("<td>");
-				//Print out current question:
 				out.print(rs.getString("password"));
 				out.print("</td>");
+				
 				out.print("<td>");
-				//Print out answer:
 				out.print(rs.getString("ssn"));
 				out.print("</td>");
-				out.print("</td>");
+				
+				out.print("<td>");
 				out.print(rs.getString("firstName"));
 				out.print("</td>");
-				out.print("</tr>");
+				
+				out.print("<td>");
 				out.print(rs.getString("lastName"));
 				out.print("</td>");
-				out.print("</tr>");
 				out.print("</tr>");
 
 			}
@@ -102,7 +100,18 @@
 		}
 	
  %>
-	
+	<form action="addCR.jsp" method="GET">
+		<input type="submit" value="Add">
+	</form>
+	<form action="selectEditCR.jsp" method="GET">
+		<input type="submit" value="Edit">
+	</form>
+	<form action="deleteCR.jsp" method="GET">
+		<input type="submit" value="Delete">
+	</form>
+	<form action="Admin.jsp" method="GET">
+		<input type="submit" value="Back">
+	</form>
 	
  <%
 	}
