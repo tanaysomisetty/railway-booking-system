@@ -15,8 +15,9 @@
 	Login:
 
 	<form action="checkLoginDetails.jsp" method="POST">
-		Still didnt set up Admin! Please select Account Type <input
-			type="radio" name="account" value="Admin" />Admin <br> <input
+		Please select Account Type <br>
+		<input
+			type="radio" name="account" value="Admin" />Admin  <input
 			type="radio" name="account" value="Customer" />Customer <input
 			type="radio" name="account" value="CustomerRep" /> Customer
 		Representative <br> Username: <input type="text" name="username" />

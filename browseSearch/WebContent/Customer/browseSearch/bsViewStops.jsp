@@ -24,7 +24,7 @@
 
 			
 			//Make a SELECT query from the sells table with the price range specified by the 'price' parameter at the index.jsp
-			String str = "SELECT s.transitLineName, s.trainId, s.departureTime, s.arrivalTime, s.stationId, (ts.fare)/numStops.ns as fps FROM TrainSchedule ts, Stops s, (SELECT transitLineName, COUNT(transitLineName) as ns FROM Stops GROUP BY transitLineName) as numStops WHERE ts.trainId = '" + searchStops + "' AND s.trainId = '" + searchStops + "' AND s.stationId = ts.destinationStationId ORDER BY s.stationId";  
+			String str = "SELECT s.transitLineName, s.trainId, s.departureTime, s.arrivalTime, s.stationId, (ts.fare)/numStops.ns as fps FROM TrainSchedule ts, Stops s, (SELECT transitLineName, COUNT(transitLineName) as ns FROM Stops GROUP BY trainId) as numStops WHERE ts.trainId = '" + searchStops + "' AND s.trainId = '" + searchStops + "' AND s.transitLineName = ts.transitLineName GROUP BY s.stationId";  
 			//String str2 = "SELECT (ts.fare)/count(ts.transitLineName) as fps FROM TrainSchedule ts, Stops s WHERE ts.trainId = '" + searchStops + "' AND s.trainId = '" + searchStops + "' GROUP BY ts.transitLineName"; 
 			//Run the query against the database.
 			

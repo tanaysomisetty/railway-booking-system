@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import=" group25.cs336.pkg.* " %>
+    pageEncoding="ISO-8859-1" import=" group25.cs336.pkg. * " %>
 <!--Import  libraries that have classes that we need -->
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>    
@@ -22,29 +22,25 @@
 		//Get parameters from the HTML form at the index.jsp
 		String newUser = request.getParameter("username");
 		String pass = request.getParameter("password");
-		//serach from table based on paramter
-		String accountType = request.getParameter("account");
+		String email = request.getParameter("email");
+		String firstName = request.getParameter("fname");
+		String lastName = request.getParameter("lname");
 		//accounttype not selected or password or newUser are null error check
-		if( accountType ==null || pass =="" || newUser ==""){
-			out.println("Please make sure to fill out all Fields <a href='index.jsp'>try again</a>");
+		if(pass == "" || newUser == "" || email == "" || firstName == "" || lastName == ""){
+			out.println("Please make sure to fill out all fields <a href='index.jsp'>try again</a>");
 			return;
 		}
 		//query to check if the user exists first
 		ResultSet rs;
-		rs = stmt.executeQuery("select * from " + accountType + " where username ='" + newUser + "'" );
+		rs = stmt.executeQuery("select * from Customer where username ='" + newUser + "'" );
 		//user exists print an error
 		if(rs.next()){
 			out.println("User already exists please login <a href='index.jsp'> try again </a>");
 		}
 		else {
 		//insert user query
-		String insertTuple = String.format("('%s','%s')",newUser,pass);
-		stmt.executeUpdate("Insert into " + accountType +" (username,password) values " + insertTuple );
-		//PreparedStatement createUser = con.prepareStatement("Insert into ? (username,password) values ('?','?')");
-		/*createUser.setString(1,accountType);
-		createUser.setString(2, newUser);
-		createUser.setString(3,pass);
-		createUser.executeUpdate();*/
+		String insertTuple = String.format("('%s','%s','%s','%s','%s')",newUser,pass,email,firstName,lastName);
+		stmt.executeUpdate("Insert into Customer(username,password,email,firstName,lastName) values " + insertTuple );
 		out.println("User created! <a href='index.jsp'>Click here to Login </a>");
 		}
 		

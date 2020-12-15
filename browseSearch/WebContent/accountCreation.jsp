@@ -10,15 +10,17 @@
     <!-- note the show.jsp will be invoked when the choice is made -->
 	<!-- The next lines give HTML for radio buttons being displayed -->
 <form action = "createAccount.jsp" method= "POST">
-	Select Account Type
-  <input type="radio" name="account" value="Admin"/>Admin 
-  <br>
-  <input type="radio" name="account" value="Customer"/>Customer 
-  <input type="radio" name="account" value="CustomerRep"/> Customer Representative
-  <br>
-	Username: <input type = "text" name = "username"/> <br/>
-	Password: <input type = "password" name = "password"/> <br/>
-	<input type ="submit" value = "Create Account">
+	<label for="username">Username:</label>
+	<input type="text" id="username" name="username"><br><br>
+	<label for="password">Password:</label>
+	<input type="text" id="password" name="password"><br><br>
+	<label for="email">Email:</label>
+	<input type="text" id="email" name="email"><br><br>
+	<label for="fname">First Name:</label>
+	<input type="text" id="fname" name="fname"><br><br>
+	<label for="lname">Last Name:</label>
+	<input type="text" id="lname" name="lname"><br><br>
+	<input type="submit" value="Create Account">
 	</form>
 </body>
 </html>
