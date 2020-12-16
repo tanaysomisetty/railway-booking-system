@@ -125,6 +125,5 @@
 	</form>
 
 <a href = '../Reservations.jsp'> Go to back to reservations menu</a> || 
-<a href = '../logout.jsp'> Log out</a>
 </body>
 </html>

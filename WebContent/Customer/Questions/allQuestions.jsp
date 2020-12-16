@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>All Questions</title>
 </head>
 <body>
 <%
@@ -19,7 +19,7 @@
 		Statement stmt = con.createStatement();
 		String user = session.getAttribute("user").toString();
 		ResultSet rs;
-		rs = stmt.executeQuery("select category,questionStatement, answer from  Questions" + " where username ='QuestionSetter'");
+		rs = stmt.executeQuery("select category,questionStatement, answer from  Questions" + " where username ='" + user + "'");
 		//no questions are answered or no questions sent by user
 		if (!rs.isBeforeFirst()) {
 			out.print("No answers have been set up yet! <a href='../Customer.jsp'> Click here to return to Navigation Menu </a>");

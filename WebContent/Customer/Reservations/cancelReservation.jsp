@@ -50,7 +50,7 @@
 %>
 
 <a href = '../Reservations.jsp'> Go back to reservations menu</a> || 
-<a href = '../logout.jsp'> Log out</a>
+
 
 </body>
 </html>

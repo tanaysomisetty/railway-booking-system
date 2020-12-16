@@ -21,10 +21,10 @@
 		ResultSet rs;
 
 		rs = stmt.executeQuery(
-		"select transitLineName, trainId, originStationId, destinationStationId, arrivalTime, departureTime, fare from TrainSchedule");
+		"select transitLineName, trainId, originStationId, destinationStationId, typeOfTrip, dateOfTravel,arrivalTime, departureTime, travelTime, fare from TrainSchedule");
 
 		if (!rs.isBeforeFirst()) {
-			out.print("No Train Schedules exist <a href='CustomerRep'> Click here to return to Navigation Menu </a>");
+			out.print("No Train Schedules exist <a href='CustomerRep.jsp'> Click here to return to Navigation Menu </a>");
 			return;
 		}
 		out.print("<table>");
@@ -34,7 +34,7 @@
 		//make a column
 		out.print("<td>");
 		//print out column header
-		out.print("transitLine");
+		out.print("Transit Line");
 		out.print("</td>");
 		//make a column
 		out.print("<td>");
@@ -42,11 +42,19 @@
 		out.print("</td>");
 		//make a column
 		out.print("<td>");
-		out.print("originStation");
+		out.print("Origin Station");
 		out.print("</td>");
 
 		out.print("<td>");
-		out.print("destinationStation");
+		out.print("destination Station");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Type of Trip");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Date of Travel");
 		out.print("</td>");
 		
 		out.print("<td>");
@@ -54,6 +62,10 @@
 		out.print("</td>");
 		out.print("<td>");
 		out.print("Departure Time");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Travel Time");
 		out.print("</td>");
 		
 		out.print("<td>");
@@ -79,19 +91,33 @@
 			out.print(rs.getString("originStationId"));
 			out.print("</td>");
 			
-			out.print("</td>");
+			out.print("<td>");
 			out.print(rs.getString("destinationStationId"));
 			out.print("</td>");
 			
+
+			out.print("<td>");
+			out.print(rs.getString("typeOfTrip"));
 			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getString("dateOfTravel"));
+			out.print("</td>");
+			
+			
+			out.print("<td>");
 			out.print(rs.getString("arrivalTime"));
 			out.print("</td>");
 			
-			out.print("</td>");
+			out.print("<td>");
 			out.print(rs.getString("departureTime"));
 			out.print("</td>");
 			
+			out.print("<td>");
+			out.print(rs.getString("travelTime"));
 			out.print("</td>");
+			
+			out.print("<td>");
 			out.print(rs.getString("fare"));
 			out.print("</td>");
 			out.print("</tr>");
@@ -106,12 +132,11 @@
 
 <!-- place two forms in html one for delete one for edit and it takes the fields using select multiple field, multiple select with CTRL -->
 <br>
-Select Attribute to delete
 <form method="get" action="UpdateAttribute.jsp">
 		<select name="attribute"  >
-			<option selected disabled > Select Attributes to delete </option>
+			<option selected disabled > Select Attribute to Update </option>
 			<option value="arrivalTime">Arrival Time</option>
-			<option value="departure Time">Departure Time</option>
+			<option value="departureTime">Departure Time</option>
 			<option value="fare">fare</option>
 			<option value = "dateOfTravel">date of Travel </option>
 			<option value = "travelTime"> Travel Time </option>
@@ -122,11 +147,20 @@ Select Attribute to delete
 		<br> TrainID <input type = "text" name = "TrainID">
 		<br /> <input type="submit" value="submit">
 	</form>
+	<br>
 <form method = "get" action = "deleteTrainSchedule.jsp">
-	<Label> Delete a Train Schedule</Label> 
-	<br> TranstLine Name <input type="text" name="transitLine" />
- 	<br> TrainID <input type = "text" name = "TrainID">
- 	<input type = "submit" value = "submit">
+<select name="attribute"  >
+	<option selected disabled > Select Attribute to Delete </option>
+			<option value="arrivalTime">Arrival Time</option>
+			<option value="departureTime">Departure Time</option>
+			<option value="fare">fare</option>
+			<option value = "dateOfTravel">date of Travel </option>
+			<option value = "travelTime"> Travel Time </option>
+		</select>&nbsp;<br>
+		<br> Please Enter Train Schedule Information <br>
+		TrainsitLine Name <input Type = "text" name = "transitLine"> 
+		<br> TrainID <input type = "text" name = "TrainID">
+		<br /> <input type="submit" value="submit">
 </form>
 </body>
 </html>

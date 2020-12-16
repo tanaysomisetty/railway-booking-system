@@ -31,13 +31,13 @@
 	</form>
 	
 	<form action="adminReservations.jsp" method="GET">
-		<input type="radio" name="reservationType" value="transit">Reservations By Transit Line</input>
-		<input type="radio" name="reservationType" value="customer">Reservations By Customer Name</input>
+		<input type="radio" name="reservationType" value="transit">Reservations By Transit Line
+		<input type="radio" name="reservationType" value="customer">Reservations By Customer Name
 		<input type="submit" value="Reservations">
 	</form>
 	<form action="revenue.jsp" method="GET">
-		<input type="radio" name="revenueType" value="transit">Revenue By Transit Line</input>
-		<input type="radio" name="revenueType" value="customer">Revenue By Customer Name</input>
+		<input type="radio" name="revenueType" value="transit">Revenue By Transit Line
+		<input type="radio" name="revenueType" value="customer">Revenue By Customer Name
 		<input type="submit" value="Revenue">
 	</form>
 	<form action="bestCustomer.jsp" method="GET">

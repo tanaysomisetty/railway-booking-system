@@ -20,7 +20,7 @@
 		String user = session.getAttribute("user").toString();
 		String category = request.getParameter("category");
 		ResultSet rs;
-		rs = stmt.executeQuery("select category,questionStatement, answer from  Questions" + " where username ='QuestionSetter' and category = '" + category + "'");
+		rs = stmt.executeQuery("select category,questionStatement, answer from  Questions" + " where username ='" + user + "' and category = '" + category + "'");
 		//no questions are answered or no questions sent by user
 		if (!rs.isBeforeFirst()) {
 			out.print("No answers have been set up yet!  <a href='../Customer.jsp'> Click here to return to Navigation Menu </a>");

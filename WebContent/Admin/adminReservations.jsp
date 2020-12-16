@@ -103,7 +103,7 @@
 			
 			if(resType.equals("customer")){
 				
-				rs = stmt.executeQuery("select c.lastname, c.firstname, c.username, r.reservationNum, r.date, r.fare, r.transitLineName, r.trainId from Reservation as r, Customer as c WHERE r.username = c.username ORDER BY c.lastname");
+				rs = stmt.executeQuery("select c.lastname, c.firstname, c.username, r.reservationNum, r.date, r.fare, r.transitLineName, r.trainId from Reservation as r, Customer as c WHERE r.username = c.username ORDER BY c.lastname, c.firstname");
 				
 				out.print("<table>");
 				

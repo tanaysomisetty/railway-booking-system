@@ -10,7 +10,7 @@
 	<form action = "getCustomers.jsp" method = "GET">
 	<br> Please Enter TransitLine Name
 	<input type = "text" name = "transitLine">
-	<br> Enter Date in format: XX/XX/XX
+	<br> Enter Date in format: XX/XX
 	<input type = "text" name = "date">
 	<input type = "Submit" value = "Submit">
 	</form>

@@ -15,7 +15,7 @@
 			value=" View Questions and Answers by Selecting a Category">
 	</form>
 
-	<form action='allQuestions' method="Get">
+	<form action='allQuestions.jsp' method="Get">
 		<input Type="Submit" value="View all Questions and Answers">
 	</form>
 </body>

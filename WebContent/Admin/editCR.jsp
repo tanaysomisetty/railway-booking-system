@@ -91,7 +91,9 @@
 		<input type="submit" value="Submit">
 	</form>
 	
-	<button href="admincustomerRep.jsp">Back</button>
+	<form action = "admincustomerRep.jsp" method = "POST">
+	<input type = "submit" value = "Back">
+	</form>
 	
  <%
 	}

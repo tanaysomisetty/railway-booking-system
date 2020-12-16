@@ -7,29 +7,37 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Delete Schedule</title>
+<title>Delete </title>
 </head>
 <body>
 	<%
+	try {
 		ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();
 	Statement stmt = con.createStatement();
 	String transitLine = request.getParameter("transitLine");
-	String trainId = request.getParameter("trainId");
+	String trainId = request.getParameter("TrainID");
+	String attribute = request.getParameter("attribute");
 	ResultSet rs;
+	if(transitLine == null || trainId == null || attribute == null){
+		out.print("Please fill out all required Fields <a href='CustomerRep.jsp'> Click here to return to Navigation Menu </a>");
+		return;
+	}
 	//check if train schedule exists
-	rs = stmt.executeQuery("Select transitLineName trainId  from TrainSchedule where transitLineName ='" + transitLine
-			+ "' and trainId = " + trainId + "");
+	rs = stmt.executeQuery("Select transitLineName, trainId  from TrainSchedule where transitLineName ='" + transitLine + "' and trainId = " + trainId + "");
 	if (!rs.isBeforeFirst()) {
 		out.print(
 		"No Train Schedules exist with given trainsitLine and trainId <a href='CustomerRep'> Click here to return to Navigation Menu </a>");
 		return;
 	}
 
-	stmt.executeUpdate("Delete from TrainSchedule where transitLineName ='" + transitLine
-			+ "' and trainId = " + trainId);
+	stmt.executeUpdate("Update TrainSchedule set " + attribute  + "= null where transitLineName ='" + transitLine + "' and trainId = " + trainId  );
 	out.println(
 			" Attribute has been updated Thank you! Click here to return to Navigation Page <br> <a href='CustomerRep.jsp'> Click here to return to Navigation Page  </a>");
+	}
+	catch(Exception e){
+		out.println("Please Input Data of the Correct data Type <a href='CustomerRep.jsp'> Click here to return to Navigation Page  </a>");
+	}
 	%>
 </body>
 </html>

@@ -34,7 +34,9 @@
 		<input type="submit" value="Delete">
 	</form>
 	
-	<button href="admincustomerRep.jsp">Back</button>
+	<form action = "admincustomerRep.jsp" method = "POST">
+	<input type = "submit" value = "Back">
+	</form>
 	
  <%
 	}

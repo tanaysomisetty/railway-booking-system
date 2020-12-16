@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.cs336.pkg.ApplicationDB "%>
+	pageEncoding="ISO-8859-1" import="com.cs336.pkg.ApplicationDB  "%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
@@ -20,19 +20,18 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			//Get the combobox from the index.jsp
-			String origin = request.getParameter("origin");
-			String destination = request.getParameter("destination");
-			String dateOfTravel = request.getParameter("dateOfTravel");
-			String sortBy = request.getParameter("sortBy");
-			
+			String searchStops = request.getParameter("searchStops");
 			
 			//Make a SELECT query from the sells table with the price range specified by the 'price' parameter at the index.jsp
-			String str = "SELECT * FROM TrainSchedule WHERE originStationId = '" + origin + "' AND destinationStationId = '" + destination + " 'AND dateOfTravel = '" + dateOfTravel + "' ORDER BY " + sortBy;  
+			String str = "SELECT s.transitLineName, s.trainId, s.departureTime, s.arrivalTime, s.stationId, (ts.fare)/numStops.ns as fps FROM TrainSchedule ts, Stops s, (SELECT trainId, transitLineName, COUNT(transitLineName) as ns FROM Stops GROUP BY trainId) as numStops WHERE ts.trainId = '" + searchStops + "' AND s.trainId = '" + searchStops + "' AND s.transitLineName = ts.transitLineName AND numStops.transitLineName = ts.transitLineName AND numStops.trainId = ts.trainId GROUP BY s.stationId";  
+			//String str2 = "SELECT (ts.fare)/count(ts.transitLineName) as fps FROM TrainSchedule ts, Stops s WHERE ts.trainId = '" + searchStops + "' AND s.trainId = '" + searchStops + "' GROUP BY ts.transitLineName"; 
 			//Run the query against the database.
+			
 			ResultSet result = stmt.executeQuery(str);
+			
 			//check if empty
 			if(!result.isBeforeFirst()){
-				out.print("No train schedules found with given values. Please select different values. <br> <a href='bsMainPage.jsp'> Return to Selection Menu </a> </br> ");
+				out.print("No stops found.  <br> <a href='bsMainPage.jsp'> Click here to return to Selection Menu </a> ");
 				return;
 			}
 			//Make an HTML table to show the results in:
@@ -50,7 +49,7 @@
 			out.print("<td>");
 			out.print("Train ID");
 			out.print("</td>");
-						
+									
 			//make a column
 			out.print("<td>");
 			out.print("Departure Time");
@@ -63,13 +62,14 @@
 			
 			//make a column
 			out.print("<td>");
-			out.print("Travel Time");
+			out.print("Stop Station");
 			out.print("</td>");
 			
 			//make a column
 			out.print("<td>");
-			out.print("Fare ($)");
+			out.print("Fare Per Stop ($)");
 			out.print("</td>");
+		
 			
 			//make a row
 			out.print("</tr>");
@@ -94,47 +94,35 @@
 				//Print out dept time:
 				out.print(result.getString("departureTime"));
 				out.print("</td>");
-				
-				//out.print("<td>");
-				//Print out stops:
-				//out.print(result.getString("departureTime"));
-				//out.print("</td>");
-				
+						
 				out.print("<td>");
 				//Print out arrival time:
 				out.print(result.getString("arrivalTime"));
 				out.print("</td>");
 				
 				out.print("<td>");
-				//Print out travel time:
-				out.print(result.getString("travelTime"));
+				//Print out stops:
+				out.print(result.getString("stationId"));
 				out.print("</td>");
 				
 				out.print("<td>");
-				//Print out fare:
-				out.print(result.getString("fare"));
+				//Print out stops:
+				out.print(result.getString("fps"));
 				out.print("</td>");
+				
+				
 				
 				out.print("</tr>");
 			}
 			out.print("</table>");
-			
+				
 			//close the connection.
 			con.close();
 		} catch (Exception e) {
 		}
+			
+		
 		
 	%>
 	
-	<form action="bsViewStops.jsp" method="POST">
-		Want to see all the stops a train will make? Enter a Train ID.
-		
-		<br> Train ID: <input type="text" name="searchStops" /> <br>
-	 <input
-			type="submit" value="submit">
-	</form>
-
-<a href = 'bsMainPage.jsp'> Return to Selection Menu</a>
-
-</body>
-</html>
+<a href = 'bsMainPage.jsp'> Return to Selection Menu</a>  

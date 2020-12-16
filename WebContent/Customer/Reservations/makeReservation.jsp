@@ -145,6 +145,6 @@
 		<input type="submit" value="Reserve"> <br>
 	</form>
 
-<a href = '../Reservations.jsp'> Go back</a> <br> <a href = '../logout.jsp'> Log out</a>
+<a href = '../Reservations.jsp'> Go back</a> <br> 
 </body>
 </html>

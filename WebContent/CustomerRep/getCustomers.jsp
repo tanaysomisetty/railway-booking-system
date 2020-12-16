@@ -21,15 +21,16 @@
 		ResultSet rs;
 		
 		rs = stmt.executeQuery(
-		"select username from Reservation where transitLineName='" + transitLine + "' and date='" + date);
+		"select username from Reservation where transitLineName='" + transitLine + "' and date='" + date + "'");
 
 		if (!rs.isBeforeFirst()) {
-			out.print("No Customers are currently reserving this transitLine exist <a href='CustomerRep'> Click here to return to Navigation Menu </a>");
+			out.print("No Customers are currently reserving this transitLine exist <a href='CustomerRep.jsp'> Click here to return to Navigation Menu </a>");
 			return;
 		}
 		else {
+			out.print("Customers <br>");
 			while(rs.next()){
-				out.print(rs.getString("username"));
+				out.print(rs.getString("username") +"<br>");
 			}
 		}
 	}catch (Exception ex) {

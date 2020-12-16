@@ -21,10 +21,10 @@
 		Statement stmt = con.createStatement();
 		ResultSet rs;
 		//check if question is in table
-		rs = stmt.executeQuery("select category,questionStatement from  Questions where answer is null");
+		rs = stmt.executeQuery("select category,questionStatement, username from  Questions where answer is null Order BY username,questionStatement" );
 		//no questions are answered or no questions sent by user
 		if (!rs.isBeforeFirst()) {
-			out.print("No Questions are available  ");
+			out.print("No Questions are available <a href='CustomerRep.jsp'> Click here to return to Navigation Page  </a> ");
 			return;
 		}
 		//print out contents of query
@@ -73,6 +73,7 @@
 			%>
 		<input type = "hidden" name = "category" value =  <%= category %>>
 		<input type = "hidden" name = "question" value = <%= questionStatement %>>
+		<input type = "hidden" name = "usernames" value = <%= rs.getString("username") %>>
 		<input type="text" name = "answer">	
 		<% 
 		out.print("</td>");

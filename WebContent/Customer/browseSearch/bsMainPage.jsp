@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Browse & Search</title>
+<title>Browse and Search</title>
 </head>
 <body>
 
@@ -16,23 +16,28 @@ Search for Train Schedule:
 			<td>Origin: </td> 
 			<td> 
 				<select name="origin" size=1>
-					<option value="7">Trenton</option>
-					<option value="6">Princeton</option>
-					<option value="5">New Brunswick</option>
-					<option value="9">Newark</option>
 					<option value="1">Penn Station New York</option>
+					<option value="2">Elizabeth</option>
+					<option value="3">Rahway</option>
+					<option value="4">Edison</option>
+					<option value="5">New Brunswick</option>
+					<option value="6">Princeton Junction</option>
+					<option value="7">Trenton</option>
+					<option value="9">Newark Penn Station</option>
 				</select>&nbsp;<br> 
 			</td>
 			
 			<td>Destination: </td> 
 			<td> 
 				<select name="destination" size=1>
-					<option value="7">Trenton</option>
-					<option value="6">Princeton</option>
+					<option value="1">Penn Station New York</option>
+					<option value="2">Elizabeth</option>
+					<option value="3">Rahway</option>
+					<option value="4">Edison</option>
 					<option value="5">New Brunswick</option>
-					<option value="9">Newark</option>
-					<option value="1">New York Penn Station</option>
-					<option value = "2"> Elizabeth </option>
+					<option value="6">Princeton Junction</option>
+					<option value="7">Trenton</option>
+					<option value="9">Newark Penn Station</option>
 				</select>&nbsp;<br> 
 			</td>
 		<tr>
@@ -65,6 +70,6 @@ Search for Train Schedule:
 		
 	</form>
 <br>
-
+<a href = '../Customer.jsp'> Return to Main Menu</a> 
 </body>
 </html>

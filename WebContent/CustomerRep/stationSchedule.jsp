@@ -12,7 +12,7 @@
 		<label for ="origin"> Origin Station</label>
 		<input type = "radio" id = "destination" name = "station" value = "destinationStationId">
 		<label for = "destination"> destination Station</label>
-		Please Enter StationName<input type = "text" name = "stationName">
+		Please Enter StationID<input type = "text" name = "stationId">
 		<input type="submit" value="Submit">
 	</form>
 </body>
